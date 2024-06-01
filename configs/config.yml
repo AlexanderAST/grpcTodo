@@ -1,1 +1,5 @@
 port: ":8080"
+
+rdb:
+  address: "localhost:6379"
+  db: 0
