@@ -11,6 +11,7 @@ var ctx = context.Background()
 type Store struct {
 	db             *redis.Client
 	userRepository *UserRepository
+	taskRepository *TaskRepository
 }
 
 func New(db *redis.Client) *Store {
@@ -26,4 +27,15 @@ func (s *Store) User() store.UserRepository {
 	s.userRepository = &UserRepository{store: s}
 
 	return s.userRepository
+}
+
+func (s *Store) Task() store.TaskRepository {
+
+	if s.taskRepository != nil {
+		return s.taskRepository
+	}
+
+	s.taskRepository = &TaskRepository{store: s}
+
+	return s.taskRepository
 }

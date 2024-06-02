@@ -15,6 +15,7 @@ import (
 
 type server struct {
 	generatedProto.UnimplementedUserServer
+	generatedProto.UnimplementedTodoServer
 	store store.Store
 }
 
@@ -36,6 +37,7 @@ func Start() error {
 	srv := newServer(store)
 
 	generatedProto.RegisterUserServer(s, srv)
+	generatedProto.RegisterTodoServer(s, srv)
 
 	port := viper.GetString("port")
 

@@ -19,7 +19,7 @@ func (r *UserRepository) CreateUser(u *model.User) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return "success", err
+	return "success", nil
 }
 
 func (r *UserRepository) GetUser(id string) (*model.User, error) {

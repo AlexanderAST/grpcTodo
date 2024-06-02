@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option go_package = "pkg/generatedProto";
+
+
+service Todo{
+  rpc CreateFolder(CreateFolderRequest) returns (CreateFolderResponse){}
+  rpc DeleteFolder(DeleteFolderRequest) returns (DeleteFolderResponse){}
+  rpc GetAllInFolder(GetAllInFolderRequest) returns (GetAllInFolderResponse){}
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse){}
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse) {}
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse) {}
+  rpc GetAllOneTask(GetAllOneTaskRequest) returns (GetAllOneTaskResponse) {}
+  rpc GetAllTasks(GetAllTasksRequest) returns (GetAllTasksResponse){}
+}
+
+
+message CreateFolderRequest{
+  string id = 1;
+  string name = 2;
+}
+message CreateFolderResponse{
+  string response = 1;
+}
+message DeleteFolderRequest{
+  string folderID = 1;
+}
+message DeleteFolderResponse{
+  string response = 1;
+}
+message GetAllInFolderRequest{
+  string folderID = 1;
+}
+message GetAllInFolderResponse{
+  repeated int64 taskID = 1 [packed=true];
+}
+message CreateTaskRequest{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string time = 4;
+  string user_id = 5;
+  string folder_id = 6;
+}
+message CreateTaskResponse{
+  string response = 1;
+}
+message UpdateTaskRequest{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string time = 4;
+  string user_id = 5;
+  string folder_id = 6;
+}
+message UpdateTaskResponse{
+  string response = 1;
+}
+message DeleteTaskRequest{
+  string id = 1;
+}
+message DeleteTaskResponse{
+  string response = 1;
+}
+
+message GetAllOneTaskRequest{
+  string id = 1;
+}
+message GetAllOneTaskResponse{
+  string response = 1;
+}
+message GetAllTasksRequest{
+
+}
+message GetAllTasksResponse{
+  repeated int64 taskID = 1 [packed=true];
+}
